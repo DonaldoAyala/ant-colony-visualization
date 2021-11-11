@@ -1,6 +1,8 @@
+import pygame
 from Map import Map
 from Point import Point
 from Cell import Cell
+from Drawer import Drawer
 
 height = 10
 width = 10
@@ -10,4 +12,10 @@ food = [Point(0,0)]
 
 map = Map((height, width), nest, food)
 map.print()
+
+drawer = Drawer(500,500,(0,0,0), "Test")
+
+pygame.init()
+while(True):
+    drawer.refresh(map)
 

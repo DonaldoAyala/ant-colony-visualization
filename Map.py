@@ -1,4 +1,3 @@
-import numpy as np
 from Cell import Cell
 
 class Map:
