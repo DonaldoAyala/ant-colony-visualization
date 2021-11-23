@@ -19,8 +19,7 @@ class Visualizer:
 
     def drawAnts(self, ants):
         for ant in ants:
-            print(ant.position)
-            pygame.draw.circle(self.window, color.yellow,
+            pygame.draw.circle(self.window, color.red,
                                ant.position.tuple, ant.radius)
 
     def drawMap(self, map):
