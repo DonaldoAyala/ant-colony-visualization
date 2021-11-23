@@ -1,6 +1,6 @@
-import Point
 import numpy as np
 import random as rand
+from Point import Point
 
 class Ant:
     def __init__(self, point):
@@ -11,24 +11,25 @@ class Ant:
         # Movements are the directions in which ants can move
         # up, up-right, right, down-right, down, down-left, left, up-left
         self.movements = [Point(0,-1),Point(1,-1),Point(1,0),Point(1,1),Point(0,1),Point(-1,1),Point(-1,0),Point(-1,-1)]
+        self.radius = 3
     
     def move(self, map):
         # Get the sum of the neighbors except predecesor
         neighborSum = 0
         for movement in self.movements:
-            next = movement + self.point
+            next = movement + self.position
             if next == self.memory[-1]:
                 continue
-            neighborSum += map.getValue(next)
+            neighborSum += map.getCell(next).pheromonLevel
         # Calculate probabilities of going to each neighbor
         weights = [0]*8
         for i in range(len(self.movements)):
-            next = self.movements[i] + self.point
+            next = self.movements[i] + self.position
             if next == self.memory[-1]:
                 weights[i] = 0
                 continue
-            weights[i] = map.getValue(next) / neighborSum
+            weights[i] = map.getCell(next).pheromonLevel / neighborSum
         # Select a move based on weights
-        self.position = self.position + rand.choices(self.movements, weights)
+        self.position = self.position + rand.choices(self.movements, weights)[0]
 
 

@@ -6,10 +6,10 @@ class Map:
         self.width = dimensions[1]
         self.height = dimensions[0]
         self.cells = [[Cell(0, pheromonLevel = 1) for i in range(self.width)] for i in range(self.height)]
+        self.setCell(nest, Cell(-1))
         for point in food:
             self.setCell(point, Cell(1, foodAmount = 5))
-        for point in nest:
-            self.setCell(point, Cell(-1))
+            
 
     def setCell(self, point, value):
         self.cells[point.y][point.x] = value
