@@ -39,4 +39,6 @@ class Visualizer:
             self.window.fill((0, 0, 0))
             self.drawMap(saco.map)
             self.drawAnts(saco.antColony.ants)
+
+            saco.antColony.updateAnts(saco.map)
             pygame.display.flip()
