@@ -13,6 +13,19 @@ class Point:
         y = self.y + point.y
         return Point(x, y)
     
+    def __sub__(self, point):
+        x = self.x - point.x
+        y = self.y - point.y
+        return Point(x, y)
+    
+    def __mul__(self, const):
+        x = self.x * const
+        y = self.y * const
+        return Point(x, y)
+
+    def __hash__(self):
+        return hash((self.x, self.y))
+    
     def __str__(self):
         return "({0},{1})".format(self.x, self.y)
 
